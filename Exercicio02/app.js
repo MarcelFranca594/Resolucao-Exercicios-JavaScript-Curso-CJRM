@@ -88,7 +88,7 @@ let randomWord = "Araponga";
 */
 
 const summerMessage = "O VERÃO CHEGA NESTE FIM DE SEMANA";
-//console.log(summerMessage.toLocaleLowerCase());
+//console.log(summerMessage.toLowerCase());
 
 /*
 10 - Comente o console.log acima, e,
@@ -99,14 +99,14 @@ const summerMessage = "O VERÃO CHEGA NESTE FIM DE SEMANA";
 */
 
 const winterMessage = "o inverno está chegando";
-//console.log(winterMessage.toLocaleUpperCase());
+//console.log(winterMessage.toUpperCase());
 
 /*
 11 - Comente o console.log acima, e,
 
 - Exiba, no console, o index do caractere "v" da "winterMessage";
 */
-//console.log(winterMessage.lastIndexOf("v"));
+//console.log(winterMessage.IndexOf("v"));
 
 /*
 12 - Comente o console.log acima, e,
