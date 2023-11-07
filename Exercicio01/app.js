@@ -47,7 +47,7 @@ const currentYear = 2023;
 /*
 07 - Exiba as const "myBirthYear" e "currentYear", lado a lado, no console do browser.
 */
-console.log(myBirthYear, currentYear);
+console.log(`Ano de nascimento ${myBirthYear} e ano atual ${currentYear}`);
 
 /*
 08 - Experimente.
