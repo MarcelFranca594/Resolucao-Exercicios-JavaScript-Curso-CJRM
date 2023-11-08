@@ -21,11 +21,10 @@
     5
 */
 
-//let i = 0;
-
 /*
-while (i <= 5) {
-  console.log(i);
+let i = 0;
+while (i < 6) {
+  console.log(`${i}`);
   i++;
 }
 */
@@ -37,8 +36,8 @@ while (i <= 5) {
 */
 
 /*
-for (let i = 0; i <= 5; i++) {
-  console.log(i);
+for (let i = 0; i < 6; i++) {
+  console.log(`${i}`);
 }
 */
 
@@ -54,8 +53,8 @@ for (let i = 0; i <= 5; i++) {
 */
 
 /*
-for (let i = 1; i <= 10; i++) {
-  console.log(`Esta é a ${i}ª vez que esta frase é exibida no console `);
+for (let i = 1; i < 11; i++) {
+  console.log(`Esta é a ${i}ª vez que esta frase é exibida no console.`);
 }
 */
 
@@ -88,13 +87,10 @@ for (let i = 0; i < cities.length; i++) {
 */
 
 const names = ["João Grilo", "Chicó", "Rosinha"];
-
-let HTMLTemplate = ""; // String Vazia
-
 for (let i = 0; i < names.length; i++) {
-  HTMLTemplate += `<li>${names[i]}</li>`; //
+  const HTMLTemplate = `<li>${names[i]}</li>`;
+  // console.log(HTMLTemplate);
 }
-//console.log(HTMLTemplate);
 
 /*
   06 - Comente o console.log acima e:
@@ -105,14 +101,12 @@ for (let i = 0; i < names.length; i++) {
   - O console deve exibir true.
 */
 
-const numbers = ["91", "5", "30", "97", "83", "31"]; // Array que contém seis elementos de strings
-let soma = 0; // O valor é atualizado a cada executação do array
-
+const numbers = ["91", "5", "30", "97", "83", "31"];
+let somar = 0;
 for (let i = 0; i < numbers.length; i++) {
-  soma += Number(numbers[i]);
+  somar += Number(numbers[i]);
 }
-//console.log(`Total dessa soma é: ${soma === 337}`);
-
+console.log(`${somar === 337}`);
 /*
   07 - Comente o console.log acima.
 
@@ -137,14 +131,10 @@ const arrays = [
   [8, 32, 16],
   [2, 8, 4],
 ];
-
-let arraysSum = 0;
-
+let resultado = 0;
 for (let i = 0; i < arrays.length; i++) {
   for (let j = 0; j < arrays[i].length; j++) {
-    arraysSum += arrays[i][j];
+    resultado += arrays[i][j];
   }
 }
-
-const a = "Marcel";
-console.log(a, arraysSum);
+console.log(`${resultado}`);
