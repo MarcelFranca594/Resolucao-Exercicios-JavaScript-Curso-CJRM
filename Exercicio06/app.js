@@ -25,11 +25,11 @@
 
 const fruits = ["morango", "banana", "mamão"];
 if (fruits.includes("abacaxi")) {
-  //console.log("A string abacaxi existe no array");
+  console.log('A string "abacaxi" existe no array fruits.');
 } else if (fruits.includes("pera")) {
-  //console.log("A sttring pera existe no array fruits");
+  console.log('A string "pera" existe no array fruits.');
 } else {
-  //console.log("Nem pera nema abaxaxi existem no array fruits");
+  console.log('"Nem pera nem abacaxi existem no array "fruits');
 }
 
 /*
@@ -45,16 +45,15 @@ if (fruits.includes("abacaxi")) {
   lógico precisam ter a constante especificada. Exemplo: hour > x && hour < y.
 */
 
-const horaAtual = 18;
-const isMorning = horaAtual >= 6 && horaAtual <= 11;
-const isAfternoon = horaAtual >= 12 && horaAtual <= 17;
-
-if (isMorning) {
-  //console.log("Bom dia");
-} else if (isAfternoon) {
-  //console.log("Boa Tarde");
+const horaAtual = 12;
+const manha = horaAtual >= 6 && horaAtual <= 11;
+const tarde = horaAtual >= 12 && horaAtual <= 17;
+if (manha) {
+  console.log("Bom dia!");
+} else if (tarde) {
+  console.log("Boa tarde!");
 } else {
-  //console.log("Boa noite");
+  console.log("Boa noite!");
 }
 
 /*
@@ -71,17 +70,13 @@ if (isMorning) {
     também está funcionando.
 */
 
-const age = 23;
-let priceMessage = null;
-const isChild = age <= 7;
-const isOlder = age >= 65;
-
-if (isChild || isOlder) {
-  priceMessage = "Para você, a entrada é gratis";
+const myAge = 23;
+const age = myAge <= 7 || myAge >= 65;
+if (age) {
+  console.log("Para você, a entrada é grátis!");
 } else {
-  priceMessage = "A entrada é de R$30,00";
+  console.log("A entrada é R$ 30,00.");
 }
-//console.log(priceMessage);
 
 /*
   04
@@ -93,17 +88,13 @@ if (isChild || isOlder) {
 */
 
 const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99];
-let numbersBetween11And90 = [];
-
+let newNumbers = [];
 for (let i = 0; i < numbers.length; i++) {
-  const number = numbers[i];
-  const isNumberBetween11And90 = number >= 11 && number <= 90;
-
-  if (isNumberBetween11And90) {
-    numbersBetween11And90.push(number); // Array vazio
+  if (numbers[i] >= 11 && numbers[i] <= 90) {
+    newNumbers.push(numbers[i]);
   }
 }
-console.log(numbersBetween11And90);
+console.log(`O resultado deve ser: [${newNumbers.join(", ")}]`);
 
 /*
   05
@@ -132,26 +123,21 @@ const crazyArray = [
   false,
 ];
 
-let countBooleans = 0;
-let countNumbers = 0;
-let countStrings = 0;
-
+let qtdeString = 0;
+let qtdeBooleans = 0;
+let qtdeNumeros = 0;
 for (let i = 0; i < crazyArray.length; i++) {
-  const typeofItem = typeof crazyArray[i];
-  const isItemANumber = typeofItem === "number";
-  const isItemABoolean = typeofItem === "boolean";
-
-  if (isItemABoolean) {
-    countBooleans++;
-  } else if (isItemANumber) {
-    countNumbers++;
+  if (typeof crazyArray[i] === "string") {
+    qtdeString++;
+  } else if (typeof crazyArray[i] === "boolean") {
+    qtdeBooleans++;
   } else {
-    countStrings++;
+    qtdeNumeros++;
   }
 }
 
 console.log(
-  `O crazyArray tem ${countBooleans} booleans, ${countNumbers} números e ${countStrings} strings`
+  `O crazyArray tem ${qtdeBooleans} booleans, ${qtdeNumeros} números e ${qtdeString} strings.`
 );
 
 /*
@@ -172,23 +158,20 @@ console.log(
 */
 
 const randomNumbers = [73, 4, 67, 10, 31, 58];
-const newNumbersPar = [];
-const newNumbersImpar = [];
-for (let i = 0; i < randomNumbers.length; i++) {
-  const number = randomNumbers[i];
-  const isEvenNumber = number % 2 == 0;
+let numberPar = [];
+let numberImpar = [];
 
-  if (isEvenNumber) {
-    newNumbersPar.push(number);
+for (let i = 0; i < randomNumbers.length; i++) {
+  if (randomNumbers[i] % 2 == 0) {
+    numberPar.push(randomNumbers[i]);
   } else {
-    newNumbersImpar.push(number);
+    numberImpar.push(randomNumbers[i]);
   }
 }
 
-const evenNumbersString = newNumbersImpar.join(", ").replace(", 3", " e 3");
-
-const oddNumbersString = newNumbersPar.join(", ").replace(", 58", " e 58");
+const oddNumberImpar = numberImpar.join(", ").replace(", 31", " e 31");
+const oddNumberPar = numberPar.join(", ").replace(", 58", " e 58");
 
 console.log(
-  `Numeros ímpares: ${evenNumbersString}. Numeros pares: ${oddNumbersString}`
+  `Numeros ímpares: ${oddNumberImpar}. Números pares: ${oddNumberPar}.`
 );
