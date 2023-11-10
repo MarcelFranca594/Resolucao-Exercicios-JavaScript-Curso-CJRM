@@ -7,11 +7,10 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
-function multiplication(firstNumber = 0, secondNumber = 0) {
-  return firstNumber * secondNumber;
+function somar(num1 = 0, num2 = 0) {
+  return num1 * num2;
 }
-
-console.log(multiplication(2, 4));
+console.log(somar(8, 4));
 
 /*
   02
@@ -21,11 +20,10 @@ console.log(multiplication(2, 4));
     2 números.
 */
 
-function division(firstNumber = 0, secondNumber = 0) {
-  return firstNumber / secondNumber;
-}
-
-console.log(division(9, 3));
+const divisao = function (n1 = 2, n2 = 2) {
+  return n1 / n2;
+};
+console.log(divisao(8, 4));
 
 /*
   03
@@ -45,7 +43,7 @@ const log = function (value = "Você deve passar um valor como argumento") {
 };
 
 for (let i = 0; i < 7; i++) {
-  log(`Esta é a ${i + 1}ª vez que essa string é exibida.`);
+  //log(`Esta é a ${i + 1}ª vez que essa string é exibida.`);
 }
 
 /*
@@ -77,16 +75,15 @@ const millennialWords = [
   "fail",
 ];
 
-const millennialWordsUpperCase = function (array = []) {
-  let newArray = [];
+const letrasMaisculas = function (array = []) {
+  let newLetrasMaisculas = [];
   for (let i = 0; i < array.length; i++) {
-    newArray.push(array[i].toUpperCase());
+    newLetrasMaisculas.push(array[i].toUpperCase());
   }
-
-  return newArray;
+  return newLetrasMaisculas;
 };
 
-console.log(millennialWordsUpperCase(millennialWords));
+console.log(letrasMaisculas(millennialWords));
 
 /*
   05
@@ -100,24 +97,23 @@ console.log(millennialWordsUpperCase(millennialWords));
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
+let numPositivoArray = 0;
+let numNegativoArray = 0;
 
-const numberPostive = function (number = 0) {
-  return number >= 1;
+const numeroPositivo = function (numero = 0) {
+  return numero >= 1;
 };
 
-let countNumberPositive = 0;
-let countNumberNegative = 0;
-
 for (let i = 0; i < randomNumbers.length; i++) {
-  if (numberPostive(randomNumbers[i])) {
-    countNumberPositive++;
+  if (numeroPositivo(randomNumbers[i])) {
+    numPositivoArray++;
   } else {
-    countNumberNegative++;
+    numNegativoArray++;
   }
 }
 
 console.log(
-  `O array "randomNumbers" possui ${randomNumbers.length} números, sendo ${countNumberPositive} positivos e ${countNumberNegative} negativos.`
+  `O array "randomNumbers" possui ${randomNumbers.length} números, sendo ${numPositivoArray} positivos e ${numNegativoArray} negativos`
 );
 
 /*
@@ -130,21 +126,19 @@ console.log(
     função.
 */
 
-const getOddNumbers = function (array = []) {
-  let newArray = [];
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] % 2 === 1) {
-      newArray.push(array[i]);
+const numerosImpares = function (numero = []) {
+  let newNumerosImpares = [];
+  for (let i = 0; i < numero.length; i++) {
+    if (numero[i] % 2 === 1) {
+      newNumerosImpares.push(numero[i]);
     }
   }
-  return newArray;
+  return newNumerosImpares;
 };
 
-const resultOddNumber = getOddNumbers(
-  getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+console.log(
+  numerosImpares([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
 );
-console.log(`${resultOddNumber}`);
-
 /*
   07
 
