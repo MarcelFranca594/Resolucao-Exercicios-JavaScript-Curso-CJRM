@@ -11,45 +11,43 @@
 */
 
 let cat = {
-  name: "Tom",
-  age: 3,
+  name: "Simba",
+  age: 4,
   color: "Branco",
-  bestFriends: ["Fred", "Mingau"],
+  bestFriends: ["Tom", "Janis", "Bilbo"],
+
   sound: function () {
     return "Miau, miau, miau...";
   },
 };
-
 console.log(cat);
-cat.sound();
+
 /*
   02
 
   - Exiba a mensagem abaixo no console, substituindo os "X" pelas informações  
     corretas.
 
-  Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", 
-  que recebeu "X", "age", que recebeu "X", "color", que recebeu "X", "bestFriends", 
-  que recebeu um array com os itens "X" e "X", e "sound", que recebeu uma função que retorna "X".
+  Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "X", "age", que recebeu "X", "color", que recebeu "X", "bestFriends", que recebeu um array com os itens "X" e "X", e "sound", que recebeu uma função que retorna "X".
 */
-
-console.log(`Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", 
-que recebeu ${cat.name}, "age", que recebeu "${
-  cat.age
-}", "color", que recebeu "${cat.color}", "bestFriends", 
-que recebeu um array com os itens "${cat.bestFriends[0]}" e "${
-  cat.bestFriends[1]
-}", e "sound", que recebeu uma função que retorna "${cat.sound()}"`);
-
+console.log(
+  `Até aqui, o objeto "cat" possui as seguintes propriedades e valores: "name", que recebeu "${
+    cat.name
+  }", "age", que recebeu "${cat.age}", "color", que recebeu "${
+    cat.color
+  }", "bestFriends", que recebeu um array com os itens "${
+    cat.bestFriends[0]
+  }" e "${
+    cat.bestFriends[1]
+  }", e "sound", que recebeu uma função que retorna ${cat.sound()}`
+);
 /*
   03
 
   - Adicione 2 anos à idade do gato e exiba a idade atualizada no console.
 */
-
 cat.age += 2;
 console.log(cat.age);
-
 /*
   04
 
@@ -58,13 +56,11 @@ console.log(cat.age);
     adicionado.
 */
 
-const myFriend = (friend) => {
-  cat.bestFriends.push(friend);
+const novoAmigo = (amigo) => {
+  cat.bestFriends.push(amigo);
 };
-
-myFriend("Pandora");
+novoAmigo("Frederico");
 console.log(cat.bestFriends);
-
 /*
   05
 
@@ -74,12 +70,11 @@ console.log(cat.bestFriends);
     colchetes.
 */
 
-const myColor = (object) => {
-  object["color"] += " e Cinza";
+const adicionarCor = (object) => {
+  object["color"] += ` e amarelo `;
 };
 
-myColor(cat);
-
+adicionarCor(cat);
 console.log(cat["color"]);
 
 /*
@@ -90,11 +85,11 @@ console.log(cat["color"]);
   - Utilize a função para exibir no console se "cat" é um objeto.
 */
 
-const isObject = (valor) => {
+const valorObjeto = (valor) => {
   return typeof valor === "object";
 };
 
-console.log(isObject(cat));
+console.log(valorObjeto(cat));
 
 /*
   07
@@ -107,22 +102,25 @@ console.log(isObject(cat));
 */
 
 let dog = {
-  name: "Thor",
-  age: 4,
-  color: "Branco",
-  bestFriends: ["luke", "Nina"],
-  sounddog: function () {
-    return "Au-au....";
+  name: "Apolo",
+  age: 3,
+  color: "dourado",
+  bestFriends: ["Thor", "Athena"],
+
+  sound: function () {
+    return "Au, au, au...";
   },
 };
 
-const soma = (idadeGato, idadeCachorro) => {
+const messagem = (cat, dog) => {
   return `A soma das idades de ${cat.name} e ${dog.name} é ${
-    idadeGato + idadeCachorro
+    cat.age + dog.age
   }.`;
 };
 
-console.log(soma(cat.age, dog.age));
+const resultado = messagem(cat, dog);
+console.log(resultado);
+
 /*
   08
 
@@ -130,14 +128,11 @@ console.log(soma(cat.age, dog.age));
     está funcionando corretamente. Mas ela pode ser melhorada;
   - Como você refatoraria esta função?
 */
-
 const cars = ["Honda HR-V", "Jeep Renegade", "Ford EcoSport", "Hyundai iX35"];
-
 const isAnSUV = (car) => {
   if (cars.includes(car)) {
     return true;
   }
-
   return false;
 };
 
@@ -157,15 +152,14 @@ console.log(isAnSUV("Ford EcoSport"));
   - Teste a função, exibindo no console a mensagem de cada propriedade.
 */
 
-const getTypeDefinition = (type) => {
-  const obj = {
-    null: "Seta, explicitamente, uma variável sem valor",
+const verificarTipoObjeto = (type) => {
+  let tipoObjeto = {
+    null: "Seta, explicitamente, uma variável sem valor.",
     undefined: "Representa um valor não-setado.",
     object: "Arrays, Datas, Objetos literais, Funções, etc.",
   };
 
-  return obj[type];
+  return tipoObjeto[type];
 };
 
-console.log(getTypeDefinition("null"));
-console.log(getTypeDefinition("object"));
+console.log(verificarTipoObjeto("object"));
