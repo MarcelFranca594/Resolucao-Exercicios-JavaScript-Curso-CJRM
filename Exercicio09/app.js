@@ -13,22 +13,23 @@
     valor no console.
 */
 
-//function convertToString(value) {
-//  return String(value);
-//}
+/*
+function convertToString(value) {
+  return String(value);
+}
+*/
 
 const convertToString = (value) => String(value);
-console.log(convertToString(true));
-
+console.log(typeof convertToString(true));
 /*
   02
 
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+const qtdeCaractere = (name = "") => name.length;
 
-const numberOfCharacter = (string) => string.length;
-console.log(numberOfCharacter("Marcel"));
+console.log(qtdeCaractere("Marcel"));
 
 /*
   03
@@ -40,9 +41,10 @@ console.log(numberOfCharacter("Marcel"));
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
-const lowerCaseCharacters = (string) => string.toLowerCase();
+const letrasMinisculas = (letras = "") => letras.toLowerCase();
+
 console.log(
-  lowerCaseCharacters(
+  letrasMinisculas(
     "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
   )
 );
@@ -53,9 +55,12 @@ console.log(
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+const caractereString = (caractere, string) => {
+  return string.indexOf(caractere);
+};
 
-const getIndex = (charactere, string) => string.indexOf(charactere);
-console.log(getIndex("2", "123"));
+const indice = caractereString("a", "banana");
+console.log(indice);
 
 /*
   05
@@ -63,10 +68,8 @@ console.log(getIndex("2", "123"));
   - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  
     passado por argumento existe no array (também passado por argumento).
 */
-
 const isItemInclude = (item, array) => array.includes(item);
 console.log(isItemInclude(2, [7, 3, 1]));
-
 /*
   06
 
@@ -74,8 +77,9 @@ console.log(isItemInclude(2, [7, 3, 1]));
     argumentos em sua invocação;
 */
 
-const isTwoArray = (firstArray, secondArray) => firstArray.concat(secondArray);
-console.log(isTwoArray([1, 2, 3, 4], [5, 6, 7, 8]));
+const concatenacaoArray = (item1, item2) => item1.concat(item2);
+
+console.log(concatenacaoArray(["Marcel"], ["Igor"]));
 
 /*
   07
@@ -84,13 +88,11 @@ console.log(isTwoArray([1, 2, 3, 4], [5, 6, 7, 8]));
     mas com o último item removido.
 */
 
-const lastItemRemoved = (number) => {
-  number.pop();
-  return number;
+const removerUltimoItem = (nomes = "") => {
+  nomes.pop();
+  return nomes;
 };
-
-console.log(lastItemRemoved([1, 2, 3, 4, 5]));
-
+console.log(removerUltimoItem(["Arthur", "Rafael", "Lucas"]));
 /*
   08
 
@@ -98,8 +100,15 @@ console.log(lastItemRemoved([1, 2, 3, 4, 5]));
     invocação é null.
 */
 
-const isItemNull = (valor) => valor === null;
-console.log(isItemNull("Marcel"));
+const valorNull = (valor) => {
+  if (valor === null) {
+    return "Valor null";
+  } else {
+    return "Valor não é null";
+  }
+};
+
+console.log(valorNull(null));
 
 /*
   09
@@ -113,15 +122,14 @@ console.log(isItemNull("Marcel"));
 */
 
 const invokeCallback = (callback) => {
-  // parametro callback
   callback();
 };
 
-const logName = () => {
-  console.log("Marcel"); // Imprimir no console quando for chamada
+const meuNome = () => {
+  console.log("Marcel Igor");
 };
 
-invokeCallback(logName); // é chamadado com logName como argumento
+invokeCallback(meuNome);
 
 /*
   10
@@ -133,14 +141,15 @@ invokeCallback(logName); // é chamadado com logName como argumento
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
-// dois parâmetros value e callback
-const callCallback = (value, callback) => {
-  return callback(value);
+
+const callCallback = (valor, callback) => {
+  return callback(valor);
 };
 
-const tripleNumber = (number) => number * 3;
+const numeroTriplo = (numero) => numero * 3;
 
-console.log(callCallback(33, tripleNumber));
+console.log(callCallback(33, numeroTriplo));
+
 /*
   11
 
@@ -151,16 +160,10 @@ console.log(callCallback(33, tripleNumber));
 */
 
 const numbers = [1, 2, 3];
-
-const showNumbersInfo = (item, index, array) => {
-  const itemPosition = index + 1;
-  const items = array.join(", ");
-
-  console.log(`O ${itemPosition}°, item do array [${items}] é ${item}`);
+const logArrayInfo = (number, index, array) => {
+  console.log(`O ${number}º item do array [${array}] é ${index}.`);
 };
-
-numbers.forEach(showNumbersInfo);
-
+numbers.forEach(logArrayInfo);
 /*
   12
 
@@ -172,16 +175,15 @@ numbers.forEach(showNumbersInfo);
 const letters = ["v", "e", "p"];
 let lettersCopy = [];
 
-//for (let i = 0; i < letters.length; i++) {
-// lettersCopy.push(letters[i]);
-//}
+for (let i = 0; i < letters.length; i++) {
+  lettersCopy.push(letters[i]);
+}
 
 letters.forEach((letter) => {
   lettersCopy.push(letter);
 });
 
 console.log(lettersCopy);
-
 /*
   13
 
@@ -211,11 +213,11 @@ const review = [
 
 let paragraphs = "";
 
-const createParagraphs = (paragraph) => {
-  paragraphs += `<p>${paragraph}</p>`;
-};
+review.forEach((revie) => {
+  paragraphs += `<p style="color: deeppink;">${revie}</p>`;
+});
 
-review.forEach(createParagraphs);
+//console.log(HTMLTemplate);
 
 section.innerHTML = paragraphs;
 
@@ -240,25 +242,19 @@ section.innerHTML = paragraphs;
     pessoas já mencionadas no início da mensagem).
 */
 
-const redeSocial = (names = []) => {
-  const firstName = names[0];
-  const secondName = names[1];
-  const thirdName = names[3];
-
-  switch (names.length) {
-    case 0:
-      return `Ninguém curtiu isso`;
-    case 1:
-      return `${firstName} curtiu isso`;
-    case 2:
-      return `${firstName} e ${secondName} curtiram isso`;
-    case 3:
-      return `${firstName}, ${secondName} e ${thirdName} curtiram isso`;
-    default:
-      return `${firstName} e ${secondName} e mais ${
-        names.length - 2
-      } pessoas curtiram isso`;
+const post = (nomes = []) => {
+  const qtde = nomes.length;
+  if (nomes.length === 0) {
+    return "Ninguém curtiu isso";
+  } else if (nomes.length === 1) {
+    return `${nomes[0]} curtiu isso`;
+  } else if (nomes.length === 2) {
+    return `${nomes[0]} e ${nomes[1]} curtiram isso`;
+  } else if (nomes.length === 3) {
+    return `${nomes[0]}, ${nomes[1]} e ${nomes[2]} curtiram isso`;
+  } else {
+    return `${nomes[0]}, ${nomes[1]} e mais ${qtde} pessoas curtiram isso.`;
   }
 };
 
-console.log(redeSocial(["Marcel", "Igor", "Reis", "França", "Mateus"]));
+console.log(post(["Rafael", "Marcel", "Carlos", "Leandro"]));
