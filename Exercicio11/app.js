@@ -4,12 +4,12 @@
   - Declare uma constante que recebe o seu nome;
   - Ela deve ter um escopo global.
 */
-const name = "Marcel";
+const nome = "Marcel";
+if (true) {
+  console.log(`dentro do 1° bloco de código: ${nome}`);
+}
+console.log(`fora do bloco de código: ${nome}`);
 
-//if (true) {
-//  console.log(`dentro do 1° bloco de código: ${name}`);
-//}
-//console.log(`fora do bloco de código: ${name}`);
 /*
   02
 
@@ -23,13 +23,12 @@ const name = "Marcel";
     defined" será exibido no console;
   - Você sabe por que isso aconteceu?
 */
-
-const age = () => {
-  let myAge = 23;
-  console.log(myAge);
+const minhaIdade = () => {
+  let idade = 23;
+  console.log(`Minha idade é ${idade}`);
 };
-age();
-// console.log(age)
+minhaIdade();
+//console.log(idade);
 
 /*
   03
@@ -50,23 +49,22 @@ age();
 */
 
 let car = {
-  name: "HB20",
-  brand: "Hyundai",
-  colors: ["Branco", "Cinnza", "Preto"],
+  name: "Hyundai",
+  brand: "HB20",
+  colors: ["Branco", "Cinza", "Azul"],
   isRunning: false,
-  run() {
+  run: function () {
     this.isRunning = true;
     return `O ${this.name} está em movimento`;
   },
-  stop() {
+  stop: function () {
     this.isRunning = false;
     return `O ${this.name} está parado`;
   },
-  getColorMessage() {
-    return `${this.name} está disponível nas cores ${
-      (this.colors.join(", ").replace(this.colors[this.colors.length - 1]),
-      `e ${this.colors[this.colors.length - 1]}`)
-    }`;
+  getColorMessage: function () {
+    const lastItem = this.colors[this.colors.length - 1];
+    const colors = this.colors.join(", ").replace(lastItem, `e ${lastItem}`);
+    return `O ${this.name} está disponível nas cores ${colors}`;
   },
 };
 
@@ -75,16 +73,13 @@ let car = {
 
   - Faça o carro andar e exiba no console se ele realmente está em movimento.
 */
-
 console.log(car.run());
 console.log(car.isRunning === true);
-
 /*
   05
 
   - Faça o carro parar e exiba no console se ele realmente está parado.
 */
-
 console.log(car.stop());
 console.log(car.isRunning === false);
 
@@ -101,4 +96,5 @@ console.log(car.getColorMessage());
   - Exiba, no console, a mensagem "O carro é um MARCA_DO_CARRO NOME_DO_CARRO";
   - Utilize a notação de colchetes para acessar as propriedades do carro.
 */
+
 console.log(`O carro é um ${car["brand"]} ${car["name"]}`);
