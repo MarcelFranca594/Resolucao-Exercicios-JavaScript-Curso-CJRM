@@ -5,11 +5,14 @@
     uma classe 'video';
   - Exiba no console os elementos filhos da ul com a classe já inserida.
 */
-const ul = document.querySelector("ul");
-Array.from(ul.children).forEach((element) => {
-  element.classList.add("video");
-  console.log(element);
+const ul = document.querySelector(".videos");
+const liss = Array.from(ul.children);
+
+liss.forEach((li) => {
+  li.classList.add("video");
 });
+
+console.log(liss);
 /*
   02
 
@@ -24,14 +27,15 @@ console.log(title.parentElement);
 
   - Descubra quem é o próximo elemento irmão do h1 e exiba-o no console;
 */
-console.log(title.nextElementSibling);
+const h1 = document.querySelector("h1");
+console.log(h1.nextElementSibling);
 /*
   04
 
   - Descubra quem é o irmão anterior da ul e exiba-o no console;
 */
 
-console.log(title.previousElementSibling);
+console.log(ul.previousElementSibling);
 
 /*
   05
@@ -82,11 +86,7 @@ button.addEventListener("click", () => {
     sejam removidos.
 */
 
-const titleH1 = document.querySelector("h1");
-
-titleH1.addEventListener("click", () => {
-  const bodyElements = document.querySelectorAll("body *");
-  bodyElements.forEach((element) => {
-    element.remove();
-  });
+const body = document.body;
+h1.addEventListener("click", () => {
+  body.innerHTML = "";
 });
