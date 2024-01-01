@@ -52,7 +52,7 @@ acontece.
 
 - Exiba a "myAge" no console.
 */
-const myAge = 2024 - myBirthYear;
+const myAge = currentYear - myBirthYear;
 console.log(myAge);
 /*
 09 - Antes do console.log abaixo, declare uma const "ten", que recebe o número  
