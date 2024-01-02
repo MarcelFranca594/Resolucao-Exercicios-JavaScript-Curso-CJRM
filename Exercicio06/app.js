@@ -24,13 +24,6 @@
 */
 
 const fruits = ["morango", "banana", "mamão"];
-if (fruits.includes("abacaxi")) {
-  console.log('A string "abacaxi" existe no array fruits.');
-} else if (fruits.includes("pera")) {
-  console.log('A string "pera" existe no array fruits.');
-} else {
-  console.log('"Nem pera nem abacaxi existem no array "fruits');
-}
 
 /*
   02
@@ -44,17 +37,6 @@ if (fruits.includes("abacaxi")) {
   Obs.: tanto a expressão do lado esquerdo quanto a do lado direito do operador  
   lógico precisam ter a constante especificada. Exemplo: hour > x && hour < y.
 */
-
-const horaAtual = 12;
-const manha = horaAtual >= 6 && horaAtual <= 11;
-const tarde = horaAtual >= 12 && horaAtual <= 17;
-if (manha) {
-  console.log("Bom dia!");
-} else if (tarde) {
-  console.log("Boa tarde!");
-} else {
-  console.log("Boa noite!");
-}
 
 /*
   03
@@ -70,14 +52,6 @@ if (manha) {
     também está funcionando.
 */
 
-const myAge = 23;
-const age = myAge <= 7 || myAge >= 65;
-if (age) {
-  console.log("Para você, a entrada é grátis!");
-} else {
-  console.log("A entrada é R$ 30,00.");
-}
-
 /*
   04
 
@@ -88,13 +62,6 @@ if (age) {
 */
 
 const numbers = [7, 92, 34, 46, 90, 25, 11, 3, 89, 76, 99];
-let newNumbers = [];
-for (let i = 0; i < numbers.length; i++) {
-  if (numbers[i] >= 11 && numbers[i] <= 90) {
-    newNumbers.push(numbers[i]);
-  }
-}
-console.log(`O resultado deve ser: [${newNumbers.join(", ")}]`);
 
 /*
   05
@@ -123,23 +90,6 @@ const crazyArray = [
   false,
 ];
 
-let qtdeString = 0;
-let qtdeBooleans = 0;
-let qtdeNumeros = 0;
-for (let i = 0; i < crazyArray.length; i++) {
-  if (typeof crazyArray[i] === "string") {
-    qtdeString++;
-  } else if (typeof crazyArray[i] === "boolean") {
-    qtdeBooleans++;
-  } else {
-    qtdeNumeros++;
-  }
-}
-
-console.log(
-  `O crazyArray tem ${qtdeBooleans} booleans, ${qtdeNumeros} números e ${qtdeString} strings.`
-);
-
 /*
   06
 
@@ -158,20 +108,3 @@ console.log(
 */
 
 const randomNumbers = [73, 4, 67, 10, 31, 58];
-let numberPar = [];
-let numberImpar = [];
-
-for (let i = 0; i < randomNumbers.length; i++) {
-  if (randomNumbers[i] % 2 == 0) {
-    numberPar.push(randomNumbers[i]);
-  } else {
-    numberImpar.push(randomNumbers[i]);
-  }
-}
-
-const oddNumberImpar = numberImpar.join(", ").replace(", 31", " e 31");
-const oddNumberPar = numberPar.join(", ").replace(", 58", " e 58");
-
-console.log(
-  `Numeros ímpares: ${oddNumberImpar}. Números pares: ${oddNumberPar}.`
-);
