@@ -7,11 +7,6 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
-function somar(num1 = 0, num2 = 0) {
-  return num1 * num2;
-}
-console.log(somar(8, 4));
-
 /*
   02
 
@@ -19,11 +14,6 @@ console.log(somar(8, 4));
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
-
-const divisao = function (n1 = 2, n2 = 2) {
-  return n1 / n2;
-};
-console.log(divisao(8, 4));
 
 /*
   03
@@ -37,14 +27,6 @@ console.log(divisao(8, 4));
 
   "Esta é a Xª vez que essa string é exibida."
 */
-
-const log = function (value = "Você deve passar um valor como argumento") {
-  console.log(value);
-};
-
-for (let i = 0; i < 7; i++) {
-  //log(`Esta é a ${i + 1}ª vez que essa string é exibida.`);
-}
 
 /*
   04
@@ -75,16 +57,6 @@ const millennialWords = [
   "fail",
 ];
 
-const letrasMaisculas = function (array = []) {
-  let newLetrasMaisculas = [];
-  for (let i = 0; i < array.length; i++) {
-    newLetrasMaisculas.push(array[i].toUpperCase());
-  }
-  return newLetrasMaisculas;
-};
-
-console.log(letrasMaisculas(millennialWords));
-
 /*
   05
 
@@ -97,24 +69,6 @@ console.log(letrasMaisculas(millennialWords));
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
-let numPositivoArray = 0;
-let numNegativoArray = 0;
-
-const numeroPositivo = function (numero = 0) {
-  return numero >= 1;
-};
-
-for (let i = 0; i < randomNumbers.length; i++) {
-  if (numeroPositivo(randomNumbers[i])) {
-    numPositivoArray++;
-  } else {
-    numNegativoArray++;
-  }
-}
-
-console.log(
-  `O array "randomNumbers" possui ${randomNumbers.length} números, sendo ${numPositivoArray} positivos e ${numNegativoArray} negativos`
-);
 
 /*
   06
@@ -126,19 +80,8 @@ console.log(
     função.
 */
 
-const numerosImpares = function (numero = []) {
-  let newNumerosImpares = [];
-  for (let i = 0; i < numero.length; i++) {
-    if (numero[i] % 2 === 1) {
-      newNumerosImpares.push(numero[i]);
-    }
-  }
-  return newNumerosImpares;
-};
+// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
 
-console.log(
-  numerosImpares([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
-);
 /*
   07
 
@@ -231,13 +174,3 @@ const functions = [
     return "Ocidentais.";
   },
 ];
-
-let sentence = "";
-
-for (let i = 0; i < functions.length; i++) {
-  const string = `${functions[i]()} `;
-
-  sentence += string;
-}
-
-console.log(sentence);
