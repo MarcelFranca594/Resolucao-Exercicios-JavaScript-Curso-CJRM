@@ -7,6 +7,12 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
+function multiplicacao(num1 = 1, num2 = 1) {
+  return num1 * num2;
+}
+
+console.log(multiplicacao(9, 7));
+
 /*
   02
 
@@ -14,6 +20,12 @@
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+
+const divisao = function (num1 = 2, num2 = 1) {
+  return num1 / num2;
+};
+
+console.log(divisao(9, 3));
 
 /*
   03
@@ -27,6 +39,14 @@
 
   "Esta é a Xª vez que essa string é exibida."
 */
+
+const exibirString = function (valor = "Informe um valor") {
+  console.log(valor);
+};
+
+for (let i = 0; i < 7; i++) {
+  //console.log(`Esta é a ${i + 1}ª vez que essa string é exibida.`);
+}
 
 /*
   04
@@ -57,6 +77,18 @@ const millennialWords = [
   "fail",
 ];
 
+const converterParaMaiusculas = function (newArray = []) {
+  let newArrayMaiuscula = [];
+
+  for (let i = 0; i < newArray.length; i++) {
+    newArrayMaiuscula.push(newArray[i].toUpperCase());
+  }
+
+  return newArrayMaiuscula;
+};
+
+console.log(converterParaMaiusculas(millennialWords));
+
 /*
   05
 
@@ -69,6 +101,24 @@ const millennialWords = [
 */
 
 const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
+let contPositivos = 0;
+let contNegativos = 0;
+
+const numeroPositivo = function (numero = 0) {
+  return numero >= 1;
+};
+
+for (let i = 0; i < randomNumbers.length; i++) {
+  if (numeroPositivo(randomNumbers[i])) {
+    contPositivos++;
+  } else {
+    contNegativos++;
+  }
+}
+
+console.log(
+  `O array "randomNumbers" possui ${randomNumbers.length} números, sendo ${contPositivos} positivos e ${contNegativos} negativos.`
+);
 
 /*
   06
@@ -80,7 +130,23 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3];
     função.
 */
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+const getOddNumbers = function (newArray = []) {
+  let newArrayImpares = [];
+
+  for (let i = 0; i < newArray.length; i++) {
+    const expressionImpar = newArray[i] % 2 === 1;
+    if (expressionImpar) {
+      newArrayImpares.push(newArray[i]);
+    }
+  }
+
+  return newArrayImpares;
+};
+
+const numeros = getOddNumbers([
+  83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42,
+]);
+console.log(numeros);
 
 /*
   07
@@ -174,3 +240,11 @@ const functions = [
     return "Ocidentais.";
   },
 ];
+
+let frase = "";
+for (let i = 0; i < functions.length; i++) {
+  frase += `${functions[i]()}`;
+  frase += " ";
+}
+
+console.log(frase);
