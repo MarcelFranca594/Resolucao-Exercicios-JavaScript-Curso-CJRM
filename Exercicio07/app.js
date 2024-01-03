@@ -5,7 +5,7 @@
   - O resultado exibido no console deve ser: false true.
 */
 
-console.log(true, false)
+console.log(!true, !false);
 
 /*
   02
@@ -16,7 +16,15 @@ console.log(true, false)
   - Se existir, exiba no console a mensagem "Existe um leão no array animals.".
 */
 
-const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
+const animals = ["macaco", "tucano", "elefante", "pavão", "hipopótamo"];
+
+for (let i = 0; i < animals.length; i++) {
+  if (!animals.includes("leão")) {
+    console.log("Leão não existe no array animals.");
+  } else {
+    console.log("Existe um leão no array animals.");
+  }
+}
 
 /*
   03
@@ -29,7 +37,20 @@ const animals = ['macaco', 'tucano', 'elefante', 'pavão', 'hipopótamo']
   "A soma ultrapassou 400. Até aqui, o valor atual é RESULTADO_DA_SOMA."
 */
 
-const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
+const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43];
+let soma = 0;
+const limit = 400;
+
+for (let i = 0; i < randomNumbers.length; i++) {
+  if (soma > limit) {
+    console.log(`A soma ultrapassou 400. Até aqui, o valor atual é ${soma}.`);
+    break;
+  }
+
+  soma += randomNumbers[i];
+}
+
+console.log(soma);
 
 /*
   04
@@ -40,7 +61,28 @@ const randomNumbers = [59, 61, 73, 57, 35, 73, 21, 87, 43]
   - Exiba a frase no console.
 */
 
-const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sabedoria.']
+const sentence = [
+  "A",
+  "certeza",
+  "dúvida",
+  "é",
+  "o",
+  "princípio",
+  "da",
+  "sabedoria.",
+];
+
+let newSentence = "";
+
+for (let i = 0; i < sentence.length; i++) {
+  const word = sentence[i] === "certeza";
+  if (word) {
+    continue;
+  }
+  newSentence += `${sentence[i]} `;
+}
+
+console.log(`${newSentence}`);
 
 /*
   05
@@ -57,7 +99,55 @@ const sentence = ['A', 'certeza', 'dúvida', 'é', 'o', 'princípio', 'da', 'sab
   "
 */
 
-const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS', 97, true, 'Git', 11, 'sticker', false, 'GitHub', true, null]
+const randomValues = [
+  57,
+  false,
+  "JS",
+  [],
+  true,
+  "HTML",
+  31,
+  null,
+  false,
+  "CSS",
+  97,
+  true,
+  "Git",
+  11,
+  "sticker",
+  false,
+  "GitHub",
+  true,
+  null,
+];
+
+let cont = 0;
+let contBoolean = 0;
+let contTotal = 0;
+let newString = [];
+
+for (let i = 0; i < randomValues.length; i++) {
+  if (cont === 4) {
+    break;
+  }
+  if (typeof randomValues[i] === "string") {
+    cont++;
+    newString.push(randomValues[i]);
+  }
+  if (typeof randomValues[i] === "boolean") {
+    contBoolean++;
+  }
+
+  contTotal++;
+}
+
+console.log(
+  `
+  - As primeiras 4 strings são ${newString.join(", ").replace(", G", " e G")}
+  - Até que as primeiras 4 strings fossem iteradas, ${contBoolean} booleans foram iterados;
+  - O array foi iterado por ${contTotal} vezes
+   `
+);
 
 /*
   06
@@ -79,7 +169,25 @@ const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS',
     da bebida além da que você escolheu.
 */
 
-// const drinkType
+const drinkType = "suco";
+
+switch (drinkType) {
+  case "água":
+    console.log(
+      "Substância química cujas moléculas são formadas por dois átomos de hidrogênio e um de oxigênio."
+    );
+    break;
+  case "refrigerante":
+    console.log(
+      "Bebida não alcoólica e não fermentada, fabricada industrialmente, à base de água mineral e açúcar."
+    );
+    break;
+  case "suco":
+    console.log("Bebida produzida do líquido extraído de frutos.");
+    break;
+  default:
+    console.log("Bebida desconhecida.");
+}
 
 /*
   07
@@ -89,7 +197,7 @@ const randomValues = [57, false, 'JS', [], true, 'HTML', 31, null, false, 'CSS',
     para testar o switch que você escreveu.
 */
 
-const a = 2
+const a = 2;
 
 // if (a === 0) {
 //   console.log(`O valor de "a" é ${a}`)
@@ -98,3 +206,14 @@ const a = 2
 // } else {
 //   console.log('O valor de "a" é qualquer número, exceto 0 e 1')
 // }
+
+switch (a) {
+  case 0:
+    console.log(`O valor de "a" é ${a}`);
+    break;
+  case 1:
+    console.log(`O valor de "a" é ${a}`);
+    break;
+  default:
+    console.log(`O valor de "a" é qualquer número, exceto 0 e 1`);
+}
