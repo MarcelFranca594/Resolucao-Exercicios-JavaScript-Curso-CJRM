@@ -13,9 +13,15 @@
     valor no console.
 */
 
+/*
 function convertToString(value) {
   return String(value);
 }
+*/
+
+const convertToString = (value) => String(value);
+
+console.log(typeof convertToString(true));
 
 /*
   02
@@ -23,6 +29,10 @@ function convertToString(value) {
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
+
+const quantidadeStrings = (texto = " ") => texto.length;
+
+console.log(quantidadeStrings("Marcel"));
 
 /*
   03
@@ -34,12 +44,26 @@ function convertToString(value) {
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
+const letrasMinusculas = (letras = "") => letras.toLowerCase();
+
+console.log(
+  letrasMinusculas(
+    "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
+  )
+);
+
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
+
+const caractereString = (caractere, texto) => {
+  return texto.indexOf(caractere);
+};
+
+console.log(caractereString("a", "banana"));
 
 /*
   05
@@ -48,12 +72,24 @@ function convertToString(value) {
     passado por argumento existe no array (também passado por argumento).
 */
 
+const verificarBoolean = (item = "", arrayFrutas = []) => {
+  return arrayFrutas.includes(item);
+};
+
+console.log(verificarBoolean("Goiaba", ["Maça", "Pera", "Goiaba"]));
+
 /*
   06
 
   - Crie uma função que retorna a concatenação de 2 arrays, passados como  
     argumentos em sua invocação;
 */
+
+const juncaoDoisArrays = (array1 = [], array2 = []) => {
+  return array1.concat(array2);
+};
+
+console.log(juncaoDoisArrays([1, 2, 3], [4, 5, 6]));
 
 /*
   07
@@ -62,12 +98,28 @@ function convertToString(value) {
     mas com o último item removido.
 */
 
+const ultimoItemRemovido = (arrayRemove) => {
+  arrayRemove.pop();
+  return arrayRemove;
+};
+console.log(ultimoItemRemovido([1, 2, 3, 4, 5]));
+
 /*
   08
 
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
+
+const verificaNull = (valor) => {
+  if (valor === null) {
+    return "O valor é null";
+  } else {
+    return "O valor não é null";
+  }
+};
+
+console.log(verificaNull(null));
 
 /*
   09
@@ -80,6 +132,15 @@ function convertToString(value) {
     foi exibido.
 */
 
+const myFunc = (callback) => {
+  callback();
+};
+
+const myName = () => {
+  console.log(`Meu nome é: Marcel Igor`);
+};
+myName();
+
 /*
   10
 
@@ -90,6 +151,14 @@ function convertToString(value) {
   - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
     resulte no triplo de 33.
 */
+const myValor = (valor, callback) => {
+  return callback(valor);
+};
+
+const triploNumero = (numero) => {
+  return numero * 3;
+};
+console.log(myValor(11, triploNumero));
 
 /*
   11
@@ -102,6 +171,12 @@ function convertToString(value) {
 
 const numbers = [1, 2, 3];
 
+const valorNumbers = (numbers, index, array) => {
+  console.log(`"O ${index}º item do array [${array}] é ${numbers}.`);
+};
+
+numbers.forEach(valorNumbers);
+
 /*
   12
 
@@ -113,9 +188,16 @@ const numbers = [1, 2, 3];
 const letters = ["v", "e", "p"];
 let lettersCopy = [];
 
+/*
 for (let i = 0; i < letters.length; i++) {
   lettersCopy.push(letters[i]);
 }
+*/
+
+letters.forEach((element) => {
+  lettersCopy.push(element);
+});
+console.log(lettersCopy);
 
 /*
   13
@@ -146,6 +228,10 @@ const review = [
 
 let paragraphs = "";
 
+review.forEach((revie) => {
+  paragraphs += `<p>${revie}</p>`;
+});
+
 section.innerHTML = paragraphs;
 
 /*
@@ -168,3 +254,21 @@ section.innerHTML = paragraphs;
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
+
+const redeSocial = (arrayNomes = []) => {
+  const qtde = arrayNomes.length - 2;
+
+  if (arrayNomes.length === 0) {
+    return "Ninguém curtiu isso";
+  } else if (arrayNomes.length === 1) {
+    return `${arrayNomes[0]} curtiu isso`;
+  } else if (arrayNomes.length === 2) {
+    return `${arrayNomes[0]} e ${arrayNomes[1]} curtiram isso`;
+  } else if (arrayNomes.length === 3) {
+    return `${arrayNomes[0]}, ${arrayNomes[1]} e ${arrayNomes[2]} curtiram isso`;
+  } else {
+    return `${arrayNomes[0]}, ${arrayNomes[1]} e mais ${qtde} pessoas curtiram isso`;
+  }
+};
+
+console.log(redeSocial(["Rafael", "Marcel", "Igor", "Lucas"]));
