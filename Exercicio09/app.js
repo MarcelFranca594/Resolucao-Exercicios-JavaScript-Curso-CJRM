@@ -13,23 +13,16 @@
     valor no console.
 */
 
-/*
 function convertToString(value) {
   return String(value);
 }
-*/
 
-const convertToString = (value) => String(value);
-console.log(typeof convertToString(true));
 /*
   02
 
   - Crie uma função que retorne a quantidade de caracteres que uma string  
     recebida por parâmetro possui.
 */
-const qtdeCaractere = (name = "") => name.length;
-
-console.log(qtdeCaractere("Marcel"));
 
 /*
   03
@@ -41,26 +34,12 @@ console.log(qtdeCaractere("Marcel"));
   "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
 */
 
-const letrasMinisculas = (letras = "") => letras.toLowerCase();
-
-console.log(
-  letrasMinisculas(
-    "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
-  )
-);
-
 /*
   04
 
   - Crie uma função que recebe 2 parâmetros: um caractere e uma string;
   - Ao ser invocada, a função deve retornar o index do caractere na string.
 */
-const caractereString = (caractere, string) => {
-  return string.indexOf(caractere);
-};
-
-const indice = caractereString("a", "banana");
-console.log(indice);
 
 /*
   05
@@ -68,18 +47,13 @@ console.log(indice);
   - Crie uma função que, ao ser invocada, retorna um boolean indicando se o item  
     passado por argumento existe no array (também passado por argumento).
 */
-const isItemInclude = (item, array) => array.includes(item);
-console.log(isItemInclude(2, [7, 3, 1]));
+
 /*
   06
 
   - Crie uma função que retorna a concatenação de 2 arrays, passados como  
     argumentos em sua invocação;
 */
-
-const concatenacaoArray = (item1, item2) => item1.concat(item2);
-
-console.log(concatenacaoArray(["Marcel"], ["Igor"]));
 
 /*
   07
@@ -88,27 +62,12 @@ console.log(concatenacaoArray(["Marcel"], ["Igor"]));
     mas com o último item removido.
 */
 
-const removerUltimoItem = (nomes = "") => {
-  nomes.pop();
-  return nomes;
-};
-console.log(removerUltimoItem(["Arthur", "Rafael", "Lucas"]));
 /*
   08
 
   - Crie uma função que retorna se o valor passado como argumento em sua  
     invocação é null.
 */
-
-const valorNull = (valor) => {
-  if (valor === null) {
-    return "Valor null";
-  } else {
-    return "Valor não é null";
-  }
-};
-
-console.log(valorNull(null));
 
 /*
   09
@@ -121,16 +80,6 @@ console.log(valorNull(null));
     foi exibido.
 */
 
-const invokeCallback = (callback) => {
-  callback();
-};
-
-const meuNome = () => {
-  console.log("Marcel Igor");
-};
-
-invokeCallback(meuNome);
-
 /*
   10
 
@@ -142,14 +91,6 @@ invokeCallback(meuNome);
     resulte no triplo de 33.
 */
 
-const callCallback = (valor, callback) => {
-  return callback(valor);
-};
-
-const numeroTriplo = (numero) => numero * 3;
-
-console.log(callCallback(33, numeroTriplo));
-
 /*
   11
 
@@ -160,10 +101,7 @@ console.log(callCallback(33, numeroTriplo));
 */
 
 const numbers = [1, 2, 3];
-const logArrayInfo = (number, index, array) => {
-  console.log(`O ${number}º item do array [${array}] é ${index}.`);
-};
-numbers.forEach(logArrayInfo);
+
 /*
   12
 
@@ -179,11 +117,6 @@ for (let i = 0; i < letters.length; i++) {
   lettersCopy.push(letters[i]);
 }
 
-letters.forEach((letter) => {
-  lettersCopy.push(letter);
-});
-
-console.log(lettersCopy);
 /*
   13
 
@@ -213,12 +146,6 @@ const review = [
 
 let paragraphs = "";
 
-review.forEach((revie) => {
-  paragraphs += `<p style="color: deeppink;">${revie}</p>`;
-});
-
-//console.log(HTMLTemplate);
-
 section.innerHTML = paragraphs;
 
 /*
@@ -241,20 +168,3 @@ section.innerHTML = paragraphs;
     pelo restante da quantidade de pessoas que curtiram o post (além das duas  
     pessoas já mencionadas no início da mensagem).
 */
-
-const post = (nomes = []) => {
-  const qtde = nomes.length;
-  if (nomes.length === 0) {
-    return "Ninguém curtiu isso";
-  } else if (nomes.length === 1) {
-    return `${nomes[0]} curtiu isso`;
-  } else if (nomes.length === 2) {
-    return `${nomes[0]} e ${nomes[1]} curtiram isso`;
-  } else if (nomes.length === 3) {
-    return `${nomes[0]}, ${nomes[1]} e ${nomes[2]} curtiram isso`;
-  } else {
-    return `${nomes[0]}, ${nomes[1]} e mais ${qtde} pessoas curtiram isso.`;
-  }
-};
-
-console.log(post(["Rafael", "Marcel", "Carlos", "Leandro"]));
