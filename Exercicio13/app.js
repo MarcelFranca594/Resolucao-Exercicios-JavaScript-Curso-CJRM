@@ -12,7 +12,14 @@ const getCatInfo = () => {
   const name = "Marcos";
   let age = 3;
   const color = "Cinza";
+  return { name, age, color };
 };
+
+const nome = getCatInfo().name;
+const age = getCatInfo().age;
+const color = getCatInfo().color;
+
+console.log(`${nome} é um gato ${color} de ${age} anos.`);
 
 /*
   02
@@ -29,7 +36,9 @@ const external = () => {
     const extraInternal = () => {
       console.log(movie.toUpperCase());
     };
+    extraInternal();
   };
+  internal();
 };
 
 external();
@@ -44,6 +53,7 @@ external();
 */
 
 let randomNumbers = [3, 2, 1];
+console.log(randomNumbers.reverse());
 
 /*
   04
@@ -61,6 +71,9 @@ let crazyArray = [
   [5, 96, 53],
 ];
 
+crazyArray.shift();
+console.log(crazyArray);
+
 /*
   05
 
@@ -77,6 +90,9 @@ const dogs = [
   { name: "Zequinha", age: 7, gender: "Male", breed: "Poodle" },
   { name: "Xica", age: 6, gender: "Female", breed: "Chihuahua" },
 ];
+
+const zequinha = dogs.find((element) => element.name === "Zequinha");
+console.log(zequinha);
 
 /*
   06
@@ -110,6 +126,9 @@ const dogs = [
   </section>
 */
 
+const title = document.querySelector(".main-title");
+console.log(title);
+
 /*
   07
 
@@ -117,3 +136,6 @@ const dogs = [
     página, através da classe deles;
   - Exiba esse NodeList no console.
 */
+
+const titleSecound = document.querySelectorAll(".secondary-title");
+console.log(titleSecound);
