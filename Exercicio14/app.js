@@ -5,10 +5,6 @@
     maiúsculas.
 */
 
-const title = document.querySelector("h1");
-
-title.textContent = title.textContent.toUpperCase();
-
 /*
   02
 
@@ -17,11 +13,7 @@ title.textContent = title.textContent.toUpperCase();
 */
 
 const numbers = [53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55];
-const ul = document.querySelector(".numbers");
 
-numbers.forEach((number) => {
-  ul.innerHTML += `<li class="number">${number}</li>`;
-});
 /*
   03
 
@@ -29,16 +21,7 @@ numbers.forEach((number) => {
     - Se o número é par, ele deve ser exibido na cor "lightblue";
     - Se o número é ímpar, exiba-o na cor "pink".
 */
-const lis = document.querySelectorAll(".number");
-lis.forEach((li) => {
-  const isEven = Number(li.textContent) % 2 === 0;
-  if (isEven) {
-    li.style.color = "lightblue";
-    return;
-  }
 
-  li.style.color = "pink";
-});
 /*
   04
 
@@ -46,9 +29,6 @@ lis.forEach((li) => {
 
   P.s: a classe "body-background" já está declarada no style.css.
 */
-
-const body = document.querySelector("body");
-body.classList.add("body-background");
 
 /*
   05
@@ -58,19 +38,11 @@ body.classList.add("body-background");
     do link do index.html.
 */
 
-const link = document.querySelector("a");
-link.setAttribute(
-  "href",
-  "https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo "
-);
-
 /*
   06
 
   - Exiba o novo valor do atributo href do link no console.
 */
-
-console.log(link.getAttribute("href"));
 
 /*
   07
@@ -78,14 +50,12 @@ console.log(link.getAttribute("href"));
   - Exiba, no console, um objeto com todas as propriedades CSS que podem ser  
     manipuladas via JS no h1.
 */
-console.log(title.style);
+
 /*
   08
 
   - Remova a classe "body-background", do elemento body.
 */
-
-body.classList.remove("body-background");
 
 /*
   09
@@ -93,6 +63,3 @@ body.classList.remove("body-background");
   - Se o link da página possuir uma classe "link", remova-a;
   - Não utilize o método remove() para fazer isso.
 */
-
-link.classList.toggle("link");
-link.classList.toggle("link");
