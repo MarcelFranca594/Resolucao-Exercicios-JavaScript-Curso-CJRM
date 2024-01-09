@@ -7,15 +7,33 @@
 
 const div = document.querySelector("div");
 const elementsInsideDiv = Array.from(div.children);
+const h2 = document.querySelector("h2");
+const divSegundo = document.querySelector(".egg");
+const button = document.querySelector("button");
 
 elementsInsideDiv.forEach((element) => {
-  element.addEventListener("click", () => {
-    console.log("Clicou no filho da div.");
+  element.addEventListener("click", (event) => {
+    event.stopPropagation();
+    //console.log();
+    h2.textContent = `Clicou no ${event.target.tagName.toLowerCase()}, filho da div.`;
   });
 });
 
 div.addEventListener("click", () => {
-  console.log("Clicou na div.");
+  //console.log("Clicou na div.");
+  h2.textContent = "Clicou na div";
+});
+
+h2.addEventListener("copy", () => {
+  console.log("Texto copiado!");
+});
+
+divSegundo.addEventListener("mousemove", (event) => {
+  divSegundo.textContent = `Eixo X: ${event.offsetX} | Eixo Y: ${event.offsetY}`;
+});
+
+button.addEventListener("click", () => {
+  divSegundo.style.backgroundColor = "lightgoldenrodyellow";
 });
 
 /*
@@ -76,3 +94,11 @@ const people = [
   { id: 8, name: "Matheus Manucci", profession: "Piloto" },
   { id: 9, name: "Hamilton Silva", profession: "Advogado" },
 ];
+
+const developer = people.some(
+  (pessoa) => pessoa.profession === "Front-end developer"
+);
+
+if (developer) {
+  console.log("O array people contém, no mínimo, um(a) Front-end developer.");
+}
