@@ -4,6 +4,43 @@
   - No envio do form, faça com que a página não seja recarregada.
 */
 
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  /*
+  Adicionado a  resolucao exercicio 02
+  const text = event.target.input.value;
+      console.log(text);
+  */
+  const text = event.target.input;
+
+  /*
+  Adicionado a resolucao exercicio 06
+   const text = event.target.input.value;
+  const expressionDois = /.{7,}/
+  if (expressionDois.test(text.value)) {
+  //console.log("é um valor válido, pois contém 7 caracteres");
+  return;
+}
+  //console.log("não é um valor válido, pois contém 6 caracteres");
+  */
+
+  // Adicionando a a resolucao exercicio 07
+  const expressionDois = /[a-zA-Z0-9]{7,11}/;
+  if (expressionDois.test(text.value)) {
+    console.log("é um valor válido, pois contém 11 letras e números");
+    text.value = "";
+    text.focus();
+    return;
+  }
+
+  console.log("não é um valor válido, pois contém um caractere especial");
+  text.value = "";
+  text.focus();
+});
+
 /*
   02
 
@@ -19,6 +56,13 @@
   - Exiba no console o boolean no qual este teste resulta.
 */
 
+const palavra = document.querySelector("p");
+
+const patten = /documentation/;
+
+const isAMatch = patten.test(palavra.textContent);
+console.log(isAMatch);
+
 /*
   04
 
@@ -30,6 +74,10 @@
 const B99message =
   "E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta";
 
+const message = /[A-Z0-9]{3}/; //
+const result = message.test(B99message);
+console.log(result);
+
 /*
   05
 
@@ -37,7 +85,8 @@ const B99message =
     resultado do teste entre a regex e a string exibido no console seja true.
 */
 
-const word = "O que a NASA fotografou no dia do seu aniversário?";
+//const word = "O que a NASA fotografou no dia do seu aniversário?";
+const word = "NASA";
 const NASARegex = /^[A-Z]{4}$/;
 const NASAResult = NASARegex.test(word);
 
