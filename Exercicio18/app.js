@@ -22,23 +22,57 @@
 */
 
 const inputUsername = document.querySelector("#username");
-const p = document.createElement("p");
+const form = document.querySelector("form");
+const button = document.querySelector("button");
 
-inputUsername.addEventListener("keyup", (event) => {
+const usernameRegex = /^[a-zA-Z]{6,}$/;
+
+const paragraphUsernameFeedback = document.createElement("p");
+const paragraphSubmitFeedback = document.createElement("p");
+
+paragraphSubmitFeedback.setAttribute("data-feedback", "submit-feedback");
+
+inputUsername.addEventListener("input", (event) => {
   const inputValue = event.target.value;
-  const usernameRegex = /^[a-zA-Z]{6,}$/;
+
+  const paragraphSubmitFeedbackExists = document.querySelector(
+    '[data-feedback="submit-feedback"]'
+  );
+
+  if (paragraphSubmitFeedbackExists) {
+    paragraphSubmitFeedback.remove();
+  }
 
   if (!usernameRegex.test(inputValue)) {
-    p.textContent =
+    paragraphUsernameFeedback.textContent =
       "O valor deve conter no mínimo 6 caracteres,com apenas letras maiúsculas e/ou minúsculas";
-    p.setAttribute("class", "username-help-feedback");
-    event.target.insertAdjacentElement("afterend", p);
+    paragraphUsernameFeedback.setAttribute("class", "username-help-feedback");
+    event.target.insertAdjacentElement("afterend", paragraphUsernameFeedback);
     return;
   }
 
-  p.textContent = "Username válido =)";
-  p.setAttributed("class", "submit-success-feedback");
-  event.target.insertAdjacentElement("afterend", p);
+  paragraphUsernameFeedback.textContent = "Username válido =)";
+  paragraphUsernameFeedback.setAttribute("class", "submit-success-feedback");
+  event.target.insertAdjacentElement("afterend", paragraphUsernameFeedback);
+});
+
+// Resolução do exercicio 02
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const inputValue = inputUsername.value;
+
+  if (!usernameRegex.test(inputValue)) {
+    paragraphSubmitFeedback.textContent =
+      "Por favor, insira um username válido";
+    paragraphSubmitFeedback.setAttribute("class", "submit-help-feedback");
+    button.insertAdjacentElement("afterend", paragraphSubmitFeedback);
+    return;
+  }
+
+  paragraphSubmitFeedback.textContent = "Dados enviados =)";
+  paragraphSubmitFeedback.setAttribute("class", "submit-success-feedback");
+  button.insertAdjacentElement("afterend", paragraphSubmitFeedback);
 });
 
 /*
@@ -70,3 +104,17 @@ inputUsername.addEventListener("keyup", (event) => {
         6;
     2) Pesquisar no MDN.
 */
+
+const some = (array, func) => {
+  for (let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+    if (func(array[i])) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+console.log(some([1, 2, 3], (item) => item === 2));
+console.log(some([4, 5, 6], (item) => item === 3));
