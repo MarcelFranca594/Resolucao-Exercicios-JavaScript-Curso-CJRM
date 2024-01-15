@@ -13,6 +13,7 @@ Independente se você já fez o quiz dos filmes enquanto acompanhava a aula, bus
 */
 const form = document.querySelector(".quiz-form");
 const arraysRespostas = ["B", "B", "B", "B"];
+const pontuacaoScore = document.querySelector("#pontuacao");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -31,5 +32,6 @@ form.addEventListener("submit", (event) => {
       score += 25;
     }
   });
-  console.log(score);
+  pontuacaoScore.innerHTML = `Pontuação: ${score}`;
+  //console.log(score);
 });
