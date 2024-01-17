@@ -7,6 +7,8 @@
 */
 
 const names = ["Caio", "André", "Dário"];
+const namesCopy = names.map((item) => item).sort();
+console.log(namesCopy);
 
 /*
   02
@@ -40,6 +42,10 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291];
 */
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70];
+
+const maiorCinquenta = randomNumbers.filter((item) => item > 50);
+const primeiroMaiorCinquenta = maiorCinquenta[0];
+console.log(primeiroMaiorCinquenta);
 
 /*
   05
