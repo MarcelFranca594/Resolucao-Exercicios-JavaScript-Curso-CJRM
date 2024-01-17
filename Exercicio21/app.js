@@ -6,10 +6,9 @@
 */
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5];
-const numerosImpares = randomNumbers.filter((item) => {
-  return item % 2 === 1;
-});
-//console.log(numerosImpares);
+const numerosImpares = randomNumbers.filter((item) => item % 2 === 1);
+
+console.log(numerosImpares);
 
 /*
   02
@@ -59,6 +58,8 @@ const cart = [
   - Nome 3
 */
 
+const nome = cart.map((item) => `- ${item.name}`);
+console.log(nome.join("\n"));
 /*
   05
 
@@ -80,6 +81,15 @@ const tarantinoMovies = [
   { name: "Kill Bill: Volume 1", release: 2003 },
 ];
 
+const nomes = tarantinoMovies.reduce((accumulator, tarantinoMovie) => {
+  if (tarantinoMovie.release < 2000) {
+    accumulator += `- ${tarantinoMovie.name}\n`;
+  }
+  return accumulator;
+}, "");
+
+console.log(nomes);
+
 /*
   06
 
@@ -96,6 +106,9 @@ const tvShows = [
   { name: "House M.D.", releaseYear: 2004 },
   { name: "Watchmen", releaseYear: 2019 },
 ];
+
+const nomeDaSerie = tvShows.map((item) => `${item.name}`);
+console.log(nomeDaSerie.join("\n"));
 
 /*
   07
