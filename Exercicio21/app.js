@@ -17,10 +17,15 @@ console.log(numerosImpares);
 */
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691];
-let cont = 0;
-const numeroAbaixo501 = crazyNumbers.filter((item) => item < 501);
-const qtde = numeroAbaixo501.length;
-//console.log(qtde);
+const numeroAbaixo501 = crazyNumbers.reduce((accumulator, crazyNumber) => {
+  if (crazyNumber < 501) {
+    accumulator += 1;
+  }
+
+  return accumulator;
+}, 0);
+
+console.log(numeroAbaixo501);
 
 /*
   03
@@ -58,8 +63,12 @@ const cart = [
   - Nome 3
 */
 
-const nome = cart.map((item) => `- ${item.name}`);
-console.log(nome.join("\n"));
+const productList = cart.reduce((accumulator, product) => {
+  return `${accumulator}- ${product.name}\n`;
+}, "");
+
+console.log(productList);
+
 /*
   05
 
@@ -81,14 +90,10 @@ const tarantinoMovies = [
   { name: "Kill Bill: Volume 1", release: 2003 },
 ];
 
-const nomes = tarantinoMovies.reduce((accumulator, tarantinoMovie) => {
-  if (tarantinoMovie.release < 2000) {
-    accumulator += `- ${tarantinoMovie.name}\n`;
-  }
-  return accumulator;
-}, "");
-
-console.log(nomes);
+const moviesBefore2000 = tarantinoMovies.filter(
+  (tarantinoMovie) => tarantinoMovie.release < 2000
+);
+console.log(moviesBefore2000);
 
 /*
   06
@@ -107,12 +112,5 @@ const tvShows = [
   { name: "Watchmen", releaseYear: 2019 },
 ];
 
-const nomeDaSerie = tvShows.map((item) => `${item.name}`);
-console.log(nomeDaSerie.join("\n"));
-
-/*
-  07
-
-  - Observe os loops da sua versão do quiz e considere se, baseado no que foi  
-    visto nessa aula, você deve refatorá-los.
-*/
+const nomeDaSerie = tvShows.map((item) => item.name);
+console.log(nomeDaSerie);
