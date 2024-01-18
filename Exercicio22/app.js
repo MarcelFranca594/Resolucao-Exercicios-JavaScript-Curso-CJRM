@@ -25,6 +25,13 @@ const characters = [
   { id: 04, name: "Mufasa" },
 ];
 
+const charactersCopy = characters.map((item) => {
+  return { id: item.id, name: item.name };
+});
+
+charactersCopy.sort((item2, item1) => item2 - item1);
+console.log(charactersCopy);
+
 /*
   03
 
@@ -35,6 +42,10 @@ const characters = [
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291];
 
+const numbersCopy = numbers.map((item) => item);
+numbersCopy.sort((item2, item1) => item2 - item1);
+console.log(numbersCopy);
+
 /*
   04
 
@@ -43,9 +54,9 @@ const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291];
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70];
 
-const maiorCinquenta = randomNumbers.filter((item) => item > 50);
-const primeiroMaiorCinquenta = maiorCinquenta[0];
-console.log(primeiroMaiorCinquenta);
+// find: É uma função de array que é usada para encontrar o primeiro elemento em um array que satisfaça uma condição específica.
+const maiorCinquenta = randomNumbers.find((item) => item > 50);
+console.log(maiorCinquenta);
 
 /*
   05
@@ -57,6 +68,12 @@ console.log(primeiroMaiorCinquenta);
 
 const people = ["Cauã", "Alfredo", "Bruno"];
 
+const peopleCopy = people.map((item) => item);
+peopleCopy.sort();
+peopleCopy.reverse();
+
+console.log({ people, peopleCopy });
+
 /*
   06
   
@@ -67,6 +84,16 @@ const people = ["Cauã", "Alfredo", "Bruno"];
 
 const ingredients = ["vinho", "tomate", "cebola", "cogumelo"];
 
+const cookedIngredients = ingredients.reduce((acc, item, index, array) => {
+  const correctWordGender = item[item.length - 1] === "a" ? "cozida" : "cozido";
+  if (index === array.length - 1) {
+    return acc + `${item} ${correctWordGender}`;
+  }
+
+  return acc + `${item} ${correctWordGender}, `;
+}, "");
+//debugger;
+
 /*
   07
   
@@ -74,7 +101,7 @@ const ingredients = ["vinho", "tomate", "cebola", "cogumelo"];
     assistiram apenas os filmes da Disney.
 */
 
-const topBrazilmovies = [
+const topBrazilMovies = [
   {
     title: "Vingadores: Ultimato",
     peopleAmount: 19686119,
@@ -111,6 +138,11 @@ const topBrazilmovies = [
   },
 ];
 
+const peopleAmount = topBrazilMovies
+  .filter((movie) => movie.distributedBy === "Disney")
+  .reduce((acc, item) => acc + item.peopleAmount, 0);
+console.log(peopleAmount);
+
 /*
   08
   
@@ -131,20 +163,32 @@ const pets = [
   { name: "Chico", age: 6, gender: "Male", type: "Dog" },
 ];
 
+const dogsInHumanAge = pets
+  .filter((pet) => pet.type === "Dog")
+  .map((dog) => ({
+    name: dog.name,
+    age: dog.age * 7,
+    gender: dog.gender,
+    type: dog.type,
+  }));
+console.log(dogsInHumanAge);
+
 /*
   09
   
-  - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
+  - Considerando o array topBrazilMovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
 
-/*
-  10
-  
-  - Na sua versão do Quiz, teste se ao enviar o form pela 2ª vez consecutiva, a 
-    pontuação do envio anterior é contabilizada;
-  - Exemplo: exibe 100% no 1º envio e 200% no 2º envio (sem modificar as 
-    alternativas entre os envios);
-    - Se isso está acontecendo, proponha uma solução para que o 2º submit não 
-      considere a pontuação do envio anterior.
-*/
+const ul = document.querySelector(".list-group");
+
+//const movieNames = topBrazilMovies
+// .map((movie) => `<li>${movie.title}</li>`)
+//.join("");
+
+const movieNames = topBrazilMovies.reduce(
+  (acc, movie) => acc + `<li>${movie.title}</li>`,
+  ""
+);
+ul.innerHTML = movieNames;
+console.log(movieNames);
