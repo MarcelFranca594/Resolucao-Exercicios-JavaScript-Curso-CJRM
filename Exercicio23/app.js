@@ -6,6 +6,7 @@
 */
 
 const myString = "    JS      ";
+console.log(myString.trim());
 
 /*
   02
@@ -23,6 +24,17 @@ const people = [
   { firstName: "Eric", lastName: "Silva", score: 82 },
 ];
 
+const peopleCopy = people.map((item) => {
+  return {
+    firstName: item.firstName,
+    lastName: item.lastName,
+    score: item.score,
+  };
+});
+
+peopleCopy.sort((item1, item2) => item1.score - item2.score);
+console.log(peopleCopy);
+
 /*
   03
 
@@ -35,12 +47,25 @@ const people = [
 
 const animals = ["cão", "gato", "boi", "leão", "gnu", "alce", "ema"];
 
+const copyAnimals = animals.reduce((acc, item) => {
+  // Verifica se o nome do animal tem 3 letras
+  if (item.length === 3) {
+    acc.push(item); // Adiciona o animal ao acumulador (novo array resultante)
+  }
+  return acc;
+}, []);
+
+//debugger;
+
 /*
   04
 
   - Baseado no array "animals", gere um novo array com a quantidade de letras do 
     nome de cada animal. Ex.: [6, 8, 2].
 */
+
+const animalNamesLength = animals.map((animal) => animal.length);
+//debugger;
 
 /*
   05
@@ -58,6 +83,10 @@ const friends = [
   { id: 5, name: "Solange", nearMe: false },
 ];
 
+const friendsNearMe = friends.filter((friend) => friend.nearMe);
+const nameOfFriendsNearMe = friendsNearMe.map((friend) => friend.name);
+//debugger;
+
 /*
   06
 
@@ -66,6 +95,9 @@ const friends = [
 */
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81];
+const oddNumbers = numbers.filter((number) => number % 2);
+const oddNumbersSum = oddNumbers.reduce((acc, oddNumber) => acc + oddNumber, 0);
+//debugger
 
 /*
   07
@@ -92,3 +124,14 @@ const data = [
     population: 263991379,
   },
 ];
+
+const filteredCountries = data.filter(
+  (countryData) => countryData.country !== "China"
+);
+
+const populationSum = filteredCountries.reduce(
+  (acc, country) => acc + country.population,
+  0
+);
+
+debugger;
