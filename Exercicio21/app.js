@@ -5,10 +5,7 @@
     o novo array no console.
 */
 
-const randomNumbers = [10, 30, 15, 25, 50, 40, 5];
-const numerosImpares = randomNumbers.filter((item) => item % 2 === 1);
-
-console.log(numerosImpares);
+const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 
 /*
   02
@@ -16,16 +13,7 @@ console.log(numerosImpares);
   - Exiba no console quantos números abaixo de 501 o array abaixo possui.
 */
 
-const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691];
-const numeroAbaixo501 = crazyNumbers.reduce((accumulator, crazyNumber) => {
-  if (crazyNumber < 501) {
-    accumulator += 1;
-  }
-
-  return accumulator;
-}, 0);
-
-console.log(numeroAbaixo501);
+const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 
 /*
   03
@@ -34,9 +22,7 @@ console.log(numeroAbaixo501);
     exiba o novo array no console.
 */
 
-const numbers = [5, 7, 3];
-const numberQuadrado = numbers.map((item) => item ** 2);
-console.log(numberQuadrado);
+const numbers = [5, 7, 3]
 
 /*
   04
@@ -50,24 +36,18 @@ console.log(numberQuadrado);
 */
 
 const cart = [
-  { name: "Dark Souls III", price: 95.03 },
-  { name: "Shadow of the Tomb Raider", price: 101.19 },
-  { name: "Sekiro: Shadows Die Twice", price: 179.99 },
-  { name: "Resident Evil 2", price: 119.9 },
-  { name: "Death Stranding", price: 149.99 },
-];
+  { name: 'Dark Souls III', price: 95.03 },
+  { name: 'Shadow of the Tomb Raider', price: 101.19 },
+  { name: 'Sekiro: Shadows Die Twice', price: 179.99 },
+  { name: 'Resident Evil 2', price: 119.90 },
+  { name: 'Death Stranding', price: 149.99 }
+]
 
 /*
   - Nome 1
   - Nome 2
   - Nome 3
 */
-
-const productList = cart.reduce((accumulator, product) => {
-  return `${accumulator}- ${product.name}\n`;
-}, "");
-
-console.log(productList);
 
 /*
   05
@@ -78,22 +58,17 @@ console.log(productList);
 */
 
 const tarantinoMovies = [
-  { name: "Bastardos inglórios", release: 2009 },
-  { name: "Pulp Fiction", release: 1994 },
-  { name: "Kill Bill: Volume 2", release: 2004 },
-  { name: "Quatro Quartos", release: 1995 },
-  { name: "Sin City", release: 2005 },
-  { name: "Era uma Vez em... Hollywood", release: 2019 },
-  { name: "Django Livre", release: 2012 },
-  { name: "Cães de Aluguel", release: 1992 },
-  { name: "À Prova de Morte", release: 2007 },
-  { name: "Kill Bill: Volume 1", release: 2003 },
-];
-
-const moviesBefore2000 = tarantinoMovies.filter(
-  (tarantinoMovie) => tarantinoMovie.release < 2000
-);
-console.log(moviesBefore2000);
+  { name: 'Bastardos inglórios', release: 2009 },
+  { name: 'Pulp Fiction', release: 1994 },
+  { name: 'Kill Bill: Volume 2', release: 2004 },
+  { name: 'Quatro Quartos', release: 1995 },
+  { name: 'Sin City', release: 2005 },
+  { name: 'Era uma Vez em... Hollywood', release: 2019 },
+  { name: 'Django Livre', release: 2012 },
+  { name: 'Cães de Aluguel', release: 1992 },
+  { name: 'À Prova de Morte', release: 2007 },
+  { name: 'Kill Bill: Volume 1', release: 2003 }
+]
 
 /*
   06
@@ -103,14 +78,18 @@ console.log(moviesBefore2000);
 */
 
 const tvShows = [
-  { name: "Breaking Bad", releaseYear: 2008 },
-  { name: "Mr. Robot", releaseYear: 2015 },
-  { name: "True Detective", releaseYear: 2014 },
-  { name: "Hannibal", releaseYear: 2013 },
-  { name: "The Handmaid's Tale", releaseYear: 2017 },
-  { name: "House M.D.", releaseYear: 2004 },
-  { name: "Watchmen", releaseYear: 2019 },
-];
+  { name: 'Breaking Bad', releaseYear: 2008 },
+  { name: 'Mr. Robot', releaseYear: 2015 },
+  { name: 'True Detective', releaseYear: 2014 },
+  { name: 'Hannibal', releaseYear: 2013 },
+  { name: 'The Handmaid\'s Tale', releaseYear: 2017 },
+  { name: 'House M.D.', releaseYear: 2004 },
+  { name: 'Watchmen', releaseYear: 2019 }
+]
 
-const nomeDaSerie = tvShows.map((item) => item.name);
-console.log(nomeDaSerie);
+/*
+  07
+
+  - Observe os loops da sua versão do quiz e considere se, baseado no que foi  
+    visto nessa aula, você deve refatorá-los.
+*/
