@@ -29,7 +29,7 @@ const charactersCopy = characters.map((item) => {
   return { id: item.id, name: item.name };
 });
 
-charactersCopy.sort((item2, item1) => item2 - item1);
+charactersCopy.sort((item2, item1) => item2.id - item1.id);
 console.log(charactersCopy);
 
 /*
@@ -43,6 +43,7 @@ console.log(charactersCopy);
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291];
 
 const numbersCopy = numbers.map((item) => item);
+
 numbersCopy.sort((item2, item1) => item2 - item1);
 console.log(numbersCopy);
 
@@ -54,9 +55,9 @@ console.log(numbersCopy);
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70];
 
-// find: É uma função de array que é usada para encontrar o primeiro elemento em um array que satisfaça uma condição específica.
-const maiorCinquenta = randomNumbers.find((item) => item > 50);
-console.log(maiorCinquenta);
+const randomNumbersCopy = randomNumbers.find((item) => item > 50);
+
+console.log(randomNumbersCopy);
 
 /*
   05
@@ -71,8 +72,7 @@ const people = ["Cauã", "Alfredo", "Bruno"];
 const peopleCopy = people.map((item) => item);
 peopleCopy.sort();
 peopleCopy.reverse();
-
-console.log({ people, peopleCopy });
+console.log(peopleCopy);
 
 /*
   06
@@ -84,15 +84,7 @@ console.log({ people, peopleCopy });
 
 const ingredients = ["vinho", "tomate", "cebola", "cogumelo"];
 
-const cookedIngredients = ingredients.reduce((acc, item, index, array) => {
-  const correctWordGender = item[item.length - 1] === "a" ? "cozida" : "cozido";
-  if (index === array.length - 1) {
-    return acc + `${item} ${correctWordGender}`;
-  }
-
-  return acc + `${item} ${correctWordGender}, `;
-}, "");
-//debugger;
+const ingredientsCopy = ingredients.reduce((acc, item) => {}, "");
 
 /*
   07
@@ -101,7 +93,7 @@ const cookedIngredients = ingredients.reduce((acc, item, index, array) => {
     assistiram apenas os filmes da Disney.
 */
 
-const topBrazilMovies = [
+const topBrazilmovies = [
   {
     title: "Vingadores: Ultimato",
     peopleAmount: 19686119,
@@ -138,8 +130,8 @@ const topBrazilMovies = [
   },
 ];
 
-const peopleAmount = topBrazilMovies
-  .filter((movie) => movie.distributedBy === "Disney")
+const peopleAmount = topBrazilmovies
+  .filter((item) => item.distributedBy === "Disney")
   .reduce((acc, item) => acc + item.peopleAmount, 0);
 console.log(peopleAmount);
 
@@ -163,32 +155,30 @@ const pets = [
   { name: "Chico", age: 6, gender: "Male", type: "Dog" },
 ];
 
-const dogsInHumanAge = pets
-  .filter((pet) => pet.type === "Dog")
+const petsCopy = pets
+  .filter((item) => item.type === "Dog")
   .map((dog) => ({
     name: dog.name,
     age: dog.age * 7,
     gender: dog.gender,
     type: dog.type,
   }));
-console.log(dogsInHumanAge);
+
+console.log(petsCopy);
 
 /*
   09
   
-  - Considerando o array topBrazilMovies, através do map ou do reduce, insira 
+  - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
 
 const ul = document.querySelector(".list-group");
 
-//const movieNames = topBrazilMovies
-// .map((movie) => `<li>${movie.title}</li>`)
-//.join("");
-
-const movieNames = topBrazilMovies.reduce(
-  (acc, movie) => acc + `<li>${movie.title}</li>`,
+const filmes = topBrazilmovies.reduce(
+  (acc, item) => acc + `<li>${item.title}</li>`,
   ""
 );
-ul.innerHTML = movieNames;
-console.log(movieNames);
+
+ul.innerHTML = filmes;
+console.log(filmes);
