@@ -6,6 +6,7 @@
 */
 
 const myString = "    JS      ";
+console.log(myString.trim());
 
 /*
   02
@@ -23,6 +24,15 @@ const people = [
   { firstName: "Eric", lastName: "Silva", score: 82 },
 ];
 
+const scoreCopy = people.map((item) => ({
+  firstName: item.firstName,
+  lastName: item.lastName,
+  score: item.score,
+}));
+
+scoreCopy.sort((item2, item1) => item2.score - item1.score);
+console.log(scoreCopy);
+
 /*
   03
 
@@ -35,12 +45,24 @@ const people = [
 
 const animals = ["cão", "gato", "boi", "leão", "gnu", "alce", "ema"];
 
+const animalsCopy = animals.reduce((acc, item) => {
+  if (item.length === 3) {
+    acc.push(item);
+  }
+  return acc;
+}, []);
+
+//debugger;
+
 /*
   04
 
   - Baseado no array "animals", gere um novo array com a quantidade de letras do 
     nome de cada animal. Ex.: [6, 8, 2].
 */
+
+const animalLength = animals.map((item) => item.length);
+//debugger;
 
 /*
   05
@@ -58,6 +80,10 @@ const friends = [
   { id: 5, name: "Solange", nearMe: false },
 ];
 
+const friendsCopy = friends.filter((item) => item.nearMe);
+const newArrayfriends = friendsCopy.map((friend) => friend.name);
+//debugger;
+
 /*
   06
 
@@ -66,6 +92,11 @@ const friends = [
 */
 
 const numbers = [46, 86, 212, 29, 51, 9, 25, 42, 81];
+
+const numbersImpares = numbers.filter((number) => number % 2);
+const numbersCopy = numbers.reduce((acc, item) => acc + item, 0);
+
+//debugger;
 
 /*
   07
@@ -92,3 +123,11 @@ const data = [
     population: 263991379,
   },
 ];
+
+const somaPopulacao = data.filter((item) => item.country !== "China");
+
+const populatacao = somaPopulacao.reduce(
+  (acc, country) => acc + country.population,
+  0
+);
+debugger;
