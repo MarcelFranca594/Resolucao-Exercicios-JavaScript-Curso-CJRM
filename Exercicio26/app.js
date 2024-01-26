@@ -6,6 +6,21 @@
   - Não utilize a date-fns.
 */
 
+const present = new Date();
+
+const formatTimeUnit = (unit) =>
+  String(unit).length === 1 ? `0${unit}` : unit;
+
+const formatacaoData = (date) => {
+  const dia = date.getDate();
+  const mes = date.getMonth() + 1;
+  const ano = date.getFullYear();
+
+  return `${formatTimeUnit(dia)}/${formatTimeUnit(mes)}/${ano}`;
+};
+
+console.log(formatacaoData(present));
+
 /*
   02
 
@@ -13,6 +28,44 @@
     data na formatação: "03:07 - domingo, 7 de junho de 2020";
   - Não utilize a date-fns.
 */
+
+const formatHoraData = (date) => {
+  const hora = date.getHours();
+  const minuto = date.getMinutes();
+  const dia = date.getDate();
+  const ano = date.getFullYear();
+  const diaDaSemana = date.getDay();
+  const mes = date.getMonth();
+  const meses = [
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abril",
+    "maio",
+    "junho",
+    "julho",
+    "agosto",
+    "setembro",
+    "outubro",
+    "novembro",
+    "dezembro",
+  ];
+
+  const diaDaSemanas = [
+    "domingo",
+    "segunda-feira",
+    "terça-feira",
+    "quarta-feira",
+    "quinta-feira",
+    "sexta-feira",
+    "sábado",
+  ];
+  return `${formatTimeUnit(hora)}:${formatTimeUnit(minuto)} - ${
+    diaDaSemanas[diaDaSemana]
+  }, ${dia} de ${meses[mes]} de ${ano}`;
+};
+
+console.log(formatHoraData(present));
 
 /*
   03
