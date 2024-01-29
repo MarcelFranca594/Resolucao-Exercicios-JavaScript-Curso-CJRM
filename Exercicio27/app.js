@@ -9,6 +9,10 @@ console.log("Linha 2");
 console.log("Linha 3");
 console.log("Linha 4");
 
+setTimeout(() => {
+  console.log("Função de callback executada 1");
+}, 2000);
+
 console.log("Linha 5");
 console.log("Linha 6");
 console.log("Linha 7");
@@ -25,7 +29,11 @@ function logGreeting(name) {
   console.log(`olá, ${name}`);
 }
 
-// x(logGreeting)
+const x = (callback) => {
+  callback("Roger");
+};
+
+x(logGreeting);
 
 /*
   03
@@ -34,7 +42,8 @@ function logGreeting(name) {
 */
 
 const numbers = [3, 4, 10, 20];
-const lesserThanFive = numbers.filter((num) => num < 5);
+const getLess = (num) => num < 5;
+const lesserThanFive = numbers.filter(getLess);
 
 console.log(lesserThanFive);
 
@@ -45,11 +54,17 @@ console.log(lesserThanFive);
 */
 
 const prices = [12, 19, 7, 209];
+const getTotalPrice = (acc, price) => acc + price;
+const totalPrice = prices.reduce(getTotalPrice, 0);
+
+/*
 let totalPrice = 0;
 
 for (let i = 0; i < prices.length; i++) {
   totalPrice += prices[i];
 }
+
+*/
 
 console.log(`Preço total: ${totalPrice}`);
 
@@ -62,6 +77,16 @@ console.log(`Preço total: ${totalPrice}`);
 */
 
 let car = { color: "amarelo" };
+let secondCar = car;
+secondCar.color = "azul";
+console.log(car.color, secondCar.color);
+
+/*
+let name = "Marcel";
+let secondName = name;
+name = "Zé";
+console.log("name:", name, "secondName: ", secondName);
+*/
 
 /*
   06
@@ -72,6 +97,18 @@ let car = { color: "amarelo" };
   - Se todos os argumentos forem passados, retorne a string 'A função foi 
     invocada com 3 argumentos'.
 */
+
+const myFunc = (param1, param2, param3) => {
+  const isParameter = [param1, param2, param3].includes(undefined);
+
+  if (isParameter) {
+    return "A função deve ser invocada com 3 argumentos";
+  }
+
+  return "A função foi invocaa com 3 argumentos";
+};
+
+console.log(myFunc(() => {}, {}, []));
 
 /*
   07
@@ -99,3 +136,27 @@ let booksBox = {
   spaces: 5,
   booksIn: 0,
 };
+
+booksBox.addBooks = (booksQuantity) => {
+  if (booksBox.booksIn === booksBox.spaces) {
+    return "A caixa já está cheia";
+  }
+
+  if (booksBox.booksIn + booksQuantity > booksBox.spaces) {
+    const avaliableSpace = booksBox.spaces - booksBox.booksIn;
+    const firtPluralOnSingular = avaliableSpace === 1 ? "cabe" : "cabem";
+    const bookPluralOrSingular = avaliableSpace === 1 ? "livro" : "livros";
+    return `Só ${firtPluralOnSingular} mais ${avaliableSpace} ${bookPluralOrSingular}`;
+  }
+
+  booksBox.booksIn += booksQuantity;
+
+  const booksPluralOrSingular = booksBox.booksIn === 1 ? "livro" : "livros";
+  return `Já há ${booksBox.booksIn} ${booksPluralOrSingular} na caixa`;
+};
+
+//console.log(booksBox.addBooks(7));
+//console.log(booksBox.addBooks(4));
+console.log(booksBox.addBooks(3));
+console.log(booksBox.addBooks(1));
+console.log(booksBox);
