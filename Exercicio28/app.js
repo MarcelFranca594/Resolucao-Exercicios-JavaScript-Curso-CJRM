@@ -17,6 +17,24 @@
 */
 
 /*
+const request = new XMLHttpRequest();
+
+request.addEventListener("readystatechange", () => {
+  if (request.readyState === 4 && request.status === 200) {
+    console.log(request.responseText);
+    return;
+  }
+
+  if (request.readyState === 4) {
+    console.log("Não foi possível obter os dados do pokémon");
+  }
+});
+
+request.open("GET", "https://pokeapi.co/api/v2/pokemon/pikachu");
+request.send();
+*/
+
+/*
   02
 
   - Crie um objeto que contém suas informações pessoais;
@@ -31,6 +49,17 @@
     - Quantos metros você caminhou (number iniciado em 0).
 */
 
+let person = {
+  name: "Marcel",
+  lastName: "Igor",
+  gender: "Masculino",
+  age: 24,
+  height: 1.83,
+  weight: 80,
+  walking: false,
+  walkedMeters: 0,
+};
+
 /*
   03
 
@@ -39,6 +68,16 @@
   - A cada vez que o método é invocado, 1 deve ser somado à idade atual;
   - Após criar o método, adicione 5 anos à idade do objeto.
 */
+
+person.incrementAge = () => {
+  person.age++;
+};
+
+for (let i = 0; i < 5; i++) {
+  person.incrementAge();
+}
+
+console.log(person);
 
 /*
   04
@@ -50,6 +89,19 @@
   - Após criar o método, faça a pessoa caminhar alguns metros, invocando o 
     método 4x, com diferentes metragens passadas por parâmetro.
 */
+
+person.walk = (meters) => {
+  person.walkedMeters += meters;
+  person.walking = true;
+};
+
+const distances = [7, 13, 15, 20];
+
+distances.forEach((meter) => {
+  person.walk(meter);
+});
+
+console.log(person.walkedMeters, person.walking);
 
 /*
   05
@@ -67,6 +119,15 @@
     - Se a quantidade de metros caminhados for 1, substitua "metros" por 
       "metro", no singular.
 */
+
+person.introduction = () => {
+  const genero = person.gender === "Feminino" ? "a" : "o";
+  const agePluralOrSingular = person.age === 1 ? "ano" : "anos";
+  const meterPluralOrSingular = person.walkedMeters === 1 ? "metro" : "metros";
+  return `Oi. Eu sou ${genero} ${person.name}, tenho ${person.age} ${agePluralOrSingular}, ${person.height} metros de altura, peso ${person.weight} quilos e, só hoje, eu já caminhei ${person.walkedMeters} ${meterPluralOrSingular}.`;
+};
+
+console.log(person.introduction());
 
 /*
   06
