@@ -141,6 +141,19 @@ console.log(person.introduction());
     - Faça isso até que 7 valores truthy sejam passados.
 */
 
+const isTruthy = (value) => Boolean(value);
+
+const falsyValues = [false, 0, "", null, undefined, NaN];
+const truthyValues = [true, "0", () => {}, {}, [], -1, false];
+
+falsyValues.forEach((falsyValue) => {
+  console.log(isTruthy(falsyValue));
+});
+
+truthyValues.forEach((truthyValue) => {
+  console.log(isTruthy(truthyValue));
+});
+
 /*
   07
 
@@ -159,3 +172,28 @@ console.log(person.introduction());
 
   Dica: propriedades de objetos podem ser declaradas como strings.
 */
+
+const getBook = (bookName) => {
+  const books = {
+    "Jurassic Park": {
+      totalPages: 466,
+      author: "Michel Crichton",
+      publisher: "Ballantine Books",
+    },
+    "As Armas da Persuasão": {
+      totalPages: 304,
+      author: "Robert Cialdini",
+      publisher: "Sextante",
+    },
+    "2001: Uma Odisséia no Espaço": {
+      totalPages: 366,
+      author: "Arthur C. Clarke",
+      publisher: "Aleph",
+    },
+  };
+  // Outra forma de fazer
+  return books[bookName] || books;
+  //return books[bookName] ? books[bookName] : books;
+};
+
+console.log(getBook());
