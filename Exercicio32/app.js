@@ -20,3 +20,36 @@
       listados na documentação: https://developers.giphy.com/docs/api/endpoint#search
   - Ignore os avisos no console. Para limpá-lo, pressione "ctrl + L".
 */
+
+const form = document.querySelector("form");
+const GIFsContainer = document.querySelector("div");
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const inputValue = event.target.search.value;
+  const APIKey = "6fpy5Jp2tupVM58ZabuNiYs9Rv1RZw7k";
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKey}&limit=1&q=${inputValue}`;
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error("Não foi possível obter os dados");
+    }
+
+    const GITData = await response.json();
+    const downsizedGIFUrl = GITData.data[0].images.downsized.url;
+    const img = document.createElement("img");
+
+    img.setAttribute("src", downsizedGIFUrl);
+    img.setAttribute("alt", GITData.data[0].title);
+
+    GIFsContainer.insertAdjacentElement("afterbegin", img);
+
+    event.target.reset();
+
+    //console.log(img);
+  } catch (error) {
+    alert(`Error: ${error.message}`);
+  }
+});
